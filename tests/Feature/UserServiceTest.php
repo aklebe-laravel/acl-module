@@ -1,5 +1,6 @@
 <?php
 
+namespace Modules\Acl\tests\Feature;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
