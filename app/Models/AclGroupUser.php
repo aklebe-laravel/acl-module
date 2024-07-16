@@ -3,8 +3,6 @@
 namespace Modules\Acl\app\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\Acl\Models\IdeHelperAclGroupUser;
-
 
 /**
  * @mixin IdeHelperAclGroupUser

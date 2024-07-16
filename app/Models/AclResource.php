@@ -4,9 +4,7 @@ namespace Modules\Acl\app\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Acl\Models\IdeHelperAclResource;
 use Modules\SystemBase\app\Models\Base\TraitBaseModel;
-
 
 /**
  * @mixin IdeHelperAclResource
