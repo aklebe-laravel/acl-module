@@ -8,4 +8,3 @@ Access Control List
 ### Description
 
 Access Control List to allow or deny users or user groups accessing objects by resources.
-
