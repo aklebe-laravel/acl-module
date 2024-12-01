@@ -2,8 +2,10 @@
 
 namespace Modules\Acl\app\Providers;
 
+use Modules\Acl\app\Models\AclGroupUser;
 use Modules\Acl\app\Services\UserService;
 use Modules\SystemBase\app\Providers\Base\ModuleBaseServiceProvider;
+use Modules\SystemBase\app\Services\ModuleService;
 
 class AclServiceProvider extends ModuleBaseServiceProvider
 {
@@ -24,6 +26,16 @@ class AclServiceProvider extends ModuleBaseServiceProvider
      */
     public function register()
     {
+        // add aliases before parent::register() ...
+        $modelList = ModuleService::getAllClassesInPath($this->moduleName, 'model', true, [AclGroupUser::class]);
+        $this->modelAliases = array_merge($this->modelAliases, $modelList);
+
+        //// or manually ...
+        //$this->modelAliases = array_merge($this->modelAliases, [
+        //    'acl_group'    => AclGroup::class,
+        //    'acl_resource' => AclResource::class,
+        //]);
+
         parent::register();
 
         $this->app->register(RouteServiceProvider::class);

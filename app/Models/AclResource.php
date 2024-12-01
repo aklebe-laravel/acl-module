@@ -4,6 +4,8 @@ namespace Modules\Acl\app\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Modules\Acl\database\factories\AclResourceFactory;
 use Modules\SystemBase\app\Models\Base\TraitBaseModel;
 
 /**
@@ -31,7 +33,13 @@ class AclResource extends Model
     protected $guarded = [];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * You can use this instead of newFactory()
+     * @var string
+     */
+    public static string $factory = AclResourceFactory::class;
+
+    /**
+     * @return BelongsToMany
      */
     public function aclGroups()
     {

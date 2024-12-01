@@ -14,4 +14,10 @@ class AclGroupUser extends Model
      */
     protected $guarded = [];
 
+//    /**
+//     * You can use this instead of newFactory()
+//     * @var string
+//     */
+//    public static string $factory = AclGroupUserFactory::class;
+
 }

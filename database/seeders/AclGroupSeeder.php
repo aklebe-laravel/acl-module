@@ -2,18 +2,20 @@
 
 namespace Modules\Acl\database\seeders;
 
-use Illuminate\Database\Seeder;
 use Modules\Acl\app\Models\AclGroup;
+use Modules\SystemBase\database\seeders\BaseModelSeeder;
 
-class AclGroupSeeder extends Seeder
+class AclGroupSeeder extends BaseModelSeeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        AclGroup::factory()->count(50)->create();
+        parent::run();
+
+        $this->TryCreateFactories(AclGroup::class, config('seeders.acl_groups.count', 10));
     }
 }

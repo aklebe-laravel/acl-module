@@ -3,12 +3,15 @@
 namespace Modules\Acl\database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Acl\app\Models\AclGroup;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\Acl\app\Models\AclGroup>
+ * @extends Factory<AclGroup>
  */
 class AclGroupFactory extends Factory
 {
+    protected $model = AclGroup::class;
+
     /**
      * Define the model's default state.
      *
@@ -17,8 +20,9 @@ class AclGroupFactory extends Factory
     public function definition()
     {
         return [
-            //            'code'             => 'acl_group_' . fake()->word(),
-            'name'        => 'ACL Group '.fake()->unique()->word(),
+            'name'        => 'ACL Group '.fake()
+                    ->unique()
+                    ->words(3, true),
             'description' => implode(' ', fake()->words(20)),
         ];
     }

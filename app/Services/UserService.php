@@ -10,6 +10,12 @@ use Modules\SystemBase\app\Services\Base\BaseService;
 
 class UserService extends BaseService
 {
+    /**
+     * If trying to assign extern username, but it's already exist.
+     * see getNextAvailableUserName()
+     *
+     * @var array|string[]
+     */
     public array $nameSuffixes = [
         'vom Licht',
         'von der Wahrheit',
@@ -114,6 +120,8 @@ class UserService extends BaseService
     }
 
     /**
+     * If trying to assign extern username, but it's already exist.
+     *
      * @param  string  $startName
      * @return string
      */

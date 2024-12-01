@@ -2,18 +2,20 @@
 
 namespace Modules\Acl\database\seeders;
 
-use Illuminate\Database\Seeder;
 use Modules\Acl\app\Models\AclResource;
+use Modules\SystemBase\database\seeders\BaseModelSeeder;
 
-class AclResourceSeeder extends Seeder
+class AclResourceSeeder extends BaseModelSeeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        AclResource::factory()->count(50)->create();
+        parent::run();
+
+        $this->TryCreateFactories(AclResource::class, config('seeders.acl_resources.count', 10));
     }
 }

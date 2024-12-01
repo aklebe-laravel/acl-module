@@ -5,6 +5,7 @@ namespace Modules\Acl\app\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Modules\Acl\database\factories\AclGroupFactory;
 use Modules\SystemBase\app\Models\Base\TraitBaseModel;
 
 
@@ -27,6 +28,12 @@ class AclGroup extends Model
     protected $guarded = [];
 
     /**
+     * You can use this instead of newFactory()
+     * @var string
+     */
+    public static string $factory = AclGroupFactory::class;
+
+    /**
      * Multiple bootable model traits is not working
      * https://github.com/laravel/framework/issues/40645
      *
@@ -35,9 +42,9 @@ class AclGroup extends Model
      *
      * Important for \Modules\Acl\Models\Base\TraitBaseModel::bootTraitBaseModel
      */
-    public function __construct()
+    public function __construct(array $attributes = array())
     {
-        parent::__construct();
+        parent::__construct($attributes);
     }
 
     /**
