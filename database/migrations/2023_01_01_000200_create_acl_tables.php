@@ -10,7 +10,7 @@ return new class () extends Migration {
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         if (!Schema::hasTable('acl_resources')) {
             Schema::create('acl_resources', function (Blueprint $table) {
@@ -84,7 +84,7 @@ return new class () extends Migration {
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('acl_group_user');
         Schema::dropIfExists('acl_group_acl_resource');

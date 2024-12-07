@@ -16,16 +16,16 @@ class AclResource extends Model
     use HasFactory;
     use TraitBaseModel;
 
-    const RES_ADMIN = 'admin';
-    const RES_DEVELOPER = 'developer';
-    const RES_STAFF = 'staff';
-    const RES_SUPPORT = 'support';
-    const RES_TRADER = 'trader';
-    const RES_MANAGE_CONTENT = 'manage_content';
-    const RES_MANAGE_DESIGN = 'manage_design';
-    const RES_MANAGE_PRODUCTS = 'manage_products';
-    const RES_MANAGE_USERS = 'manage_users';
-    const RES_TESTER = 'tester';
+    const string RES_ADMIN = 'admin';
+    const string RES_DEVELOPER = 'developer';
+    const string RES_STAFF = 'staff';
+    const string RES_SUPPORT = 'support';
+    const string RES_TRADER = 'trader';
+    const string RES_MANAGE_CONTENT = 'manage_content';
+    const string RES_MANAGE_DESIGN = 'manage_design';
+    const string RES_MANAGE_PRODUCTS = 'manage_products';
+    const string RES_MANAGE_USERS = 'manage_users';
+    const string RES_TESTER = 'tester';
 
     /**
      * @var array
@@ -41,7 +41,7 @@ class AclResource extends Model
     /**
      * @return BelongsToMany
      */
-    public function aclGroups()
+    public function aclGroups(): BelongsToMany
     {
         return $this->belongsToMany(AclGroup::class)->withTimestamps();
     }

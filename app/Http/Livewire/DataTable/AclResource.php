@@ -12,7 +12,7 @@ class AclResource extends BaseDataTable
     /**
      * Minimum restrictions to allow this component.
      */
-    public const aclResources = [AclResourceModel::RES_DEVELOPER, AclResourceModel::RES_MANAGE_USERS];
+    public const array aclResources = [AclResourceModel::RES_DEVELOPER, AclResourceModel::RES_MANAGE_USERS];
 
     /**
      * @var string
@@ -66,13 +66,13 @@ class AclResource extends BaseDataTable
     }
 
     /**
-     * @param $livewireId
-     * @param $aclResourceId
+     * @param  string|int  $livewireId
+     * @param  string|int  $aclResourceId
      *
      * @return bool
      */
     #[On('send-email')]
-    public function sendEmail(mixed $livewireId, mixed $aclResourceId): bool
+    public function sendEmail(string|int $livewireId, string|int $aclResourceId): bool
     {
         if (!$this->checkLivewireId($livewireId)) {
             return false;

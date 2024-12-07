@@ -14,7 +14,7 @@ class ImportAclGroup extends NativeObjectBase
     /**
      * Relation method if parent form exists.
      */
-    const PARENT_RELATION_METHOD_NAME = 'aclGroups';
+    const string PARENT_RELATION_METHOD_NAME = 'aclGroups';
 
     /**
      *

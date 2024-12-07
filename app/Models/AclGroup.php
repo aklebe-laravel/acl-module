@@ -17,10 +17,10 @@ class AclGroup extends Model
     use HasFactory;
     use TraitBaseModel;
 
-    const GROUP_STAFF = 'Staff';
-    const GROUP_TRADERS = 'Traders';
-    const GROUP_PUPPETS = 'Puppets';
-    const GROUP_NON_HUMANS = self::GROUP_PUPPETS;
+    const string GROUP_STAFF = 'Staff';
+    const string GROUP_TRADERS = 'Traders';
+    const string GROUP_PUPPETS = 'Puppets';
+    const string GROUP_NON_HUMANS = self::GROUP_PUPPETS;
 
     /**
      * @var array
@@ -50,7 +50,7 @@ class AclGroup extends Model
     /**
      * @return BelongsToMany
      */
-    public function aclResources()
+    public function aclResources(): BelongsToMany
     {
         return $this->belongsToMany(AclResource::class)->withTimestamps();
     }
@@ -58,7 +58,7 @@ class AclGroup extends Model
     /**
      * @return BelongsToMany
      */
-    public function users()
+    public function users(): BelongsToMany
     {
         return $this->belongsToMany(static::$userClassName)->withTimestamps();
     }

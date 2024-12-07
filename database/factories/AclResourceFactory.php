@@ -17,7 +17,7 @@ class AclResourceFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'code'        => 'acl_res_'.fake()->word(),

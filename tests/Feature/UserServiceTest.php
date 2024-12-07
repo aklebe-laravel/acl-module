@@ -2,6 +2,8 @@
 
 namespace Modules\Acl\tests\Feature;
 
+use App\Models\User;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Modules\Acl\app\Services\UserService;
@@ -28,7 +30,7 @@ class UserServiceTest extends TestCase
         DB::beginTransaction();
         try {
             $userService = app(UserService::class);
-            $randomUser = app(\App\Models\User::class)->with([])->inRandomOrder()->first();
+            $randomUser = app(User::class)->with([])->inRandomOrder()->first();
 
             // dynamic list of all suffixes
             $list = [];
@@ -47,7 +49,6 @@ class UserServiceTest extends TestCase
                 break;
             }
 
-            $usersCreated = [];
             foreach ($list as $item) {
                 $name = $userService->getNextAvailableUserName($item['name']);
                 Log::debug('Name and expected name: ', [$name, $item['expect']]);
@@ -55,12 +56,11 @@ class UserServiceTest extends TestCase
                     $success = false;
                     break;
                 }
-                $user = app(\App\Models\User::class)->makeWithDefaults([
+                $user = app(User::class)->makeWithDefaults([
                     'name' => $name,
                 ]);
                 Log::debug('user saved:', [get_class($user), $user->name]);
                 $user->save();
-                $usersCreated[] = $user;
             }
 
             // foreach ($usersCreated as $user) {
