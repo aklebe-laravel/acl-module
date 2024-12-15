@@ -17,7 +17,7 @@ class AclResource extends BaseDataTable
     /**
      * @var string
      */
-    public string $modelName = 'AclResource';
+    public string $eloquentModelName = AclResourceModel::class;
 
     /**
      * @return array[]

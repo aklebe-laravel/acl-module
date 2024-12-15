@@ -3,6 +3,7 @@
 namespace Modules\Acl\app\Http\Livewire\DataTable;
 
 use Livewire\Attributes\On;
+use Modules\Acl\app\Models\AclGroup as AclGroupModel;
 use Modules\Acl\app\Models\AclResource;
 use Modules\DataTable\app\Http\Livewire\DataTable\Base\BaseDataTable;
 use Nette\NotImplementedException;
@@ -18,7 +19,7 @@ class AclGroup extends BaseDataTable
     /**
      * @var string
      */
-    public string $modelName = 'AclGroup';
+    public string $eloquentModelName = AclGroupModel::class;
 
     /**
      * @return array[]

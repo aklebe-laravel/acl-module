@@ -1,11 +1,11 @@
 {
-  "name": "Acl",
-  "alias": "acl",
-  "description": "",
-  "keywords": [],
-  "priority": 1200,
-  "providers": [
-    "Modules\\Acl\\app\\Providers\\AclServiceProvider"
-  ],
-  "files": []
+    "name": "Acl",
+    "alias": "acl",
+    "description": "",
+    "keywords": [],
+    "priority": 1200,
+    "providers": [
+        "Modules\\Acl\\app\\Providers\\AclServiceProvider"
+    ],
+    "files": []
 }
