@@ -1,7 +1,7 @@
 {
     "name": "aklebe-laravel/acl-module",
     "type": "laravel-module",
-    "description": "",
+    "description": "Access Control List to allow or deny users or user groups accessing objects by resources.",
     "authors": [
         {
             "name": "Andreas Klebe",

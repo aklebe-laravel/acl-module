@@ -1,7 +1,7 @@
 {
     "name": "Acl",
     "alias": "acl",
-    "description": "",
+    "description": "Access Control List to allow or deny users or user groups accessing objects by resources.",
     "keywords": [],
     "priority": 1200,
     "providers": [

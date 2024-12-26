@@ -1,11 +1,12 @@
 {
-  "private": true,
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build"
-  },
-  "devDependencies": {
-    "lodash": "^4.17.21",
-    "postcss": "^8.3.7"
-  }
+    "private": true,
+    "description": "Access Control List to allow or deny users or user groups accessing objects by resources.",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "lodash": "^4.17.21",
+        "postcss": "^8.3.7"
+    }
 }
