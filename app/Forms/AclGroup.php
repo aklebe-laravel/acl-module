@@ -41,7 +41,7 @@ class AclGroup extends ModelBase
 
         return [
             ... $parentFormData,
-            'title'        => $this->makeFormTitle($this->jsonResource, 'name'),
+            'title'        => $this->makeFormTitle($this->getDataSource(), 'name'),
             'tab_controls' => [
                 'base_item' => [
                     'tab_pages' => [
@@ -86,7 +86,7 @@ class AclGroup extends ModelBase
                         ],
                         [
                             // don't show if creating a new object ...
-                            'disabled' => !$this->jsonResource->getKey(),
+                            'disabled' => !$this->getDataSource()->getKey(),
                             'tab'      => [
                                 'label' => __('Acl Resources'),
                             ],
