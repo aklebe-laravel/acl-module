@@ -9,7 +9,7 @@ class AclResource extends ModelBase
     /**
      * Relations commonly built in with(...)
      * * Also used for:
-     * * - blacklist for properties to cleanup the object if needed
+     * * - blacklist for properties to clean up the object if needed
      * * - onAfterUpdateItem() to sync relations
      *
      * @var array[]

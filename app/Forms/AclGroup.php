@@ -39,6 +39,8 @@ class AclGroup extends ModelBase
     {
         $parentFormData = parent::getFormElements();
 
+        $defaultSettings = $this->getDefaultFormSettingsByPermission();
+
         return [
             ... $parentFormData,
             'title'        => $this->makeFormTitle($this->getDataSource(), 'name'),
@@ -99,6 +101,35 @@ class AclGroup extends ModelBase
                                         'css_group'    => 'col-12',
                                         'options'      => [
                                             'table' => 'acl::data-table.acl-resource',
+                                        ],
+                                        'validator'    => [
+                                            'nullable',
+                                            'array'
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                        [
+                            // don't show if creating a new object ...
+                            'disabled' => !$this->getDataSource()->getKey(),
+                            'tab'      => [
+                                'label' => __('Users'),
+                            ],
+                            'content'  => [
+                                'form_elements' => [
+                                    'users' => [
+                                        'html_element' => $defaultSettings['element_dt'],
+                                        'label'        => __('Users'),
+                                        'description'  => __('Users linked to this group'),
+                                        'css_group'    => 'col-12',
+                                        'options'      => [
+                                            'form'          => 'website-base::form.user',
+                                            'table'         => 'website-base::data-table.user',
+                                            'table_options' => [
+                                                'description'             => "",
+                                                'useCollectionUserFilter' => false,
+                                            ],
                                         ],
                                         'validator'    => [
                                             'nullable',

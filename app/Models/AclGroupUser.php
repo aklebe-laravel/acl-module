@@ -14,6 +14,11 @@ class AclGroupUser extends Model
      */
     protected $guarded = [];
 
+    /**
+     * @var string
+     */
+    protected $table = 'acl_group_user';
+
 //    /**
 //     * You can use this instead of newFactory()
 //     * @var string

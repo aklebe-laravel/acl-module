@@ -46,6 +46,10 @@ class AclResource extends BaseDataTable
                 'searchable' => true,
                 'sortable'   => true,
                 'css_all'    => 'hide-mobile-show-md w-20',
+                'options'    => [
+                    'has_open_link' => $this->canEdit(),
+                    // 'str_limit'     => 30,
+                ],
             ],
             [
                 'name'       => 'description',

@@ -41,6 +41,10 @@ class AclGroup extends BaseDataTable
                 'searchable' => true,
                 'sortable'   => true,
                 'css_all'    => 'w-40',
+                'options'    => [
+                    'has_open_link' => $this->canEdit(),
+                    // 'str_limit'     => 30,
+                ],
             ],
             [
                 'name'       => 'description',
