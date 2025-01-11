@@ -12,7 +12,7 @@ return [
     // data rows itself
     'data'    => [
         [
-            'code'        => 'admin',
+            'code'        => AclResource::RES_ADMIN,
             'name'        => 'Admin',
             'description' => 'Administrator'
         ],
@@ -22,17 +22,17 @@ return [
             'description' => 'One of the site owners'
         ],
         [
-            'code'        => 'support',
+            'code'        => AclResource::RES_SUPPORT,
             'name'        => 'Support',
             'description' => 'Support Team'
         ],
         [
-            'code'        => 'developer',
+            'code'        => AclResource::RES_DEVELOPER,
             'name'        => 'Developer',
             'description' => 'Developer Team'
         ],
         [
-            'code'        => 'staff',
+            'code'        => AclResource::RES_STAFF,
             'name'        => 'Staff',
             'description' => 'Staff/Contributor'
         ],
@@ -42,7 +42,7 @@ return [
             'description' => 'Marketing Team'
         ],
         [
-            'code'        => 'trader',
+            'code'        => AclResource::RES_TRADER,
             'name'        => 'Trader',
             'description' => 'Trader'
         ],
@@ -52,32 +52,32 @@ return [
             'description' => 'Designer Team'
         ],
         [
-            'code'        => 'manage_content',
+            'code'        => AclResource::RES_MANAGE_CONTENT,
             'name'        => 'Content Management',
             'description' => 'Content Management'
         ],
         [
-            'code'        => 'manage_design',
+            'code'        => AclResource::RES_MANAGE_DESIGN,
             'name'        => 'Design Management',
             'description' => 'Design Management'
         ],
         [
-            'code'        => 'manage_products',
+            'code'        => AclResource::RES_MANAGE_PRODUCTS,
             'name'        => 'Product Management',
             'description' => 'Product Management'
         ],
         [
-            'code'        => 'manage_users',
+            'code'        => AclResource::RES_MANAGE_USERS,
             'name'        => 'User Management',
             'description' => 'User Management'
         ],
         [
-            'code'        => 'tester',
+            'code'        => AclResource::RES_TESTER,
             'name'        => 'Tester',
             'description' => 'Tester Team'
         ],
         [
-            'code'        => 'puppet',
+            'code'        => AclResource::RES_NON_HUMAN,
             'name'        => 'Puppet',
             'description' => 'Not a human'
         ]

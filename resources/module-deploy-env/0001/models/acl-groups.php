@@ -1,6 +1,7 @@
 <?php
 
 use Modules\Acl\app\Models\AclGroup;
+use Modules\Acl\app\Models\AclResource;
 
 return [
     // class of eloquent model
@@ -129,11 +130,11 @@ return [
             ],
         ],
         [
-            'name'            => 'Puppets',
+            'name'            => AclGroup::GROUP_NON_HUMANS,
             'description'     => 'Not a human',
             '#sync_relations' => [
                 'res' => [
-                    'puppet',
+                    AclResource::RES_NON_HUMAN,
                 ],
             ],
         ],

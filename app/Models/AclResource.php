@@ -21,6 +21,8 @@ class AclResource extends Model
     const string RES_STAFF = 'staff';
     const string RES_SUPPORT = 'support';
     const string RES_TRADER = 'trader';
+    const string RES_PUPPET = 'puppet';
+    const string RES_NON_HUMAN = self::RES_PUPPET;
     const string RES_MANAGE_CONTENT = 'manage_content';
     const string RES_MANAGE_DESIGN = 'manage_design';
     const string RES_MANAGE_PRODUCTS = 'manage_products';
