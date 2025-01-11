@@ -4,148 +4,149 @@ use Modules\Acl\app\Models\AclGroup;
 
 return [
     // class of eloquent model
-    "model"     => AclGroup::class,
+    'model'     => AclGroup::class,
     // update data if exists and data differ (default false)
-    "update"    => false,
+    'update'    => false,
     // columns to check if data already exists (AND WHERE)
-    "uniques"   => ["name"],
+    'uniques'   => ['name'],
     // relations to update/create
-    "relations" => [
-        "res" => [
+    'relations' => [
+        'res' => [
             // relation method which have to exists
-            "method"  => "aclResources",
+            'method'  => 'aclResources',
             // column(s) to find specific #sync_relations items below
-            "columns" => "code",
+            'columns' => 'code',
             // delete items if not listed here (default: false)
-            "delete"  => false,
+            'delete'  => false,
         ],
     ],
     // data rows itself
-    "data"      => [
+    'data'      => [
         [
-            "name"            => "Admins",
-            "description"     => "Administrators",
-            "#sync_relations" => [
-                "res" => [
-                    "admin"
-                ]
-            ]
+            'name'            => 'Admins',
+            'description'     => 'Administrators',
+            '#sync_relations' => [
+                'res' => [
+                    'admin',
+                ],
+            ],
         ],
         [
-            "name"            => "Site Owners",
-            "description"     => "Site Owners",
-            "#sync_relations" => [
-                "res" => [
-                    "site_owner"
-                ]
-            ]
+            'name'            => 'Site Owners',
+            'description'     => 'Site Owners',
+            '#sync_relations' => [
+                'res' => [
+                    'site_owner',
+                    'admin',
+                ],
+            ],
         ],
         [
-            "name"            => "Supporters",
-            "description"     => "Support Team",
-            "#sync_relations" => [
-                "res" => [
-                    "trader",
-                    "staff",
-                    "support"
-                ]
-            ]
+            'name'            => 'Supporters',
+            'description'     => 'Support Team',
+            '#sync_relations' => [
+                'res' => [
+                    'trader',
+                    'staff',
+                    'support',
+                ],
+            ],
         ],
         [
-            "name"            => "Developers",
-            "description"     => "Developer Team",
-            "#sync_relations" => [
-                "res" => [
-                    "trader",
-                    "staff",
-                    "developer"
-                ]
-            ]
+            'name'            => 'Developers',
+            'description'     => 'Developer Team',
+            '#sync_relations' => [
+                'res' => [
+                    'trader',
+                    'staff',
+                    'developer',
+                ],
+            ],
         ],
         [
-            "name"            => "Staff",
-            "description"     => "Staff/Contributors",
-            "#sync_relations" => [
-                "res" => [
-                    "trader",
-                    "staff"
-                ]
-            ]
+            'name'            => 'Staff',
+            'description'     => 'Staff/Contributors',
+            '#sync_relations' => [
+                'res' => [
+                    'trader',
+                    'staff',
+                ],
+            ],
         ],
         [
-            "name"            => "Marketing",
-            "description"     => "Marketing Team",
-            "#sync_relations" => [
-                "res" => [
-                    "trader",
-                    "staff",
-                    "marketing"
-                ]
-            ]
+            'name'            => 'Marketing',
+            'description'     => 'Marketing Team',
+            '#sync_relations' => [
+                'res' => [
+                    'trader',
+                    'staff',
+                    'marketing',
+                ],
+            ],
         ],
         [
-            "name"            => "Designers",
-            "description"     => "Designer Team",
-            "#sync_relations" => [
-                "res" => [
-                    "trader",
-                    "staff",
-                    "designer"
-                ]
-            ]
+            'name'            => 'Designers',
+            'description'     => 'Designer Team',
+            '#sync_relations' => [
+                'res' => [
+                    'trader',
+                    'staff',
+                    'designer',
+                ],
+            ],
         ],
         [
-            "name"            => "Content Managers",
-            "description"     => "Allowed to manage content",
-            "#sync_relations" => [
-                "res" => [
-                    "trader",
-                    "staff",
-                    "manage_content"
-                ]
-            ]
+            'name'            => 'Content Managers',
+            'description'     => 'Allowed to manage content',
+            '#sync_relations' => [
+                'res' => [
+                    'trader',
+                    'staff',
+                    'manage_content',
+                ],
+            ],
         ],
         [
-            "name"            => "Design Managers",
-            "description"     => "Allowed to manage design",
-            "#sync_relations" => [
-                "res" => [
-                    "trader",
-                    "staff",
-                    "manage_design"
-                ]
-            ]
+            'name'            => 'Design Managers',
+            'description'     => 'Allowed to manage design',
+            '#sync_relations' => [
+                'res' => [
+                    'trader',
+                    'staff',
+                    'manage_design',
+                ],
+            ],
         ],
         [
-            "name"            => "User Managers",
-            "description"     => "Allowed to manage users",
-            "#sync_relations" => [
-                "res" => [
-                    "trader",
-                    "staff",
-                    "manage_users"
-                ]
-            ]
+            'name'            => 'User Managers',
+            'description'     => 'Allowed to manage users',
+            '#sync_relations' => [
+                'res' => [
+                    'trader',
+                    'staff',
+                    'manage_users',
+                ],
+            ],
         ],
         [
-            "name"            => "Puppets",
-            "description"     => "Not a human",
-            "#sync_relations" => [
-                "res" => [
-                    "puppet"
-                ]
-            ]
+            'name'            => 'Puppets',
+            'description'     => 'Not a human',
+            '#sync_relations' => [
+                'res' => [
+                    'puppet',
+                ],
+            ],
         ],
         [
-            "name"            => "Testers",
-            "description"     => "Tester Team",
-            "#sync_relations" => [
-                "res" => [
-                    "trader",
-                    "staff",
-                    "tester"
-                ]
-            ]
-        ]
-    ]
+            'name'            => 'Testers',
+            'description'     => 'Tester Team',
+            '#sync_relations' => [
+                'res' => [
+                    'trader',
+                    'staff',
+                    'tester',
+                ],
+            ],
+        ],
+    ],
 ];

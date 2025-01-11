@@ -2,7 +2,6 @@
 
 namespace Modules\Acl\app\Events;
 
-
 use Illuminate\Database\Eloquent\Model;
 
 class BelongsToManySaved
