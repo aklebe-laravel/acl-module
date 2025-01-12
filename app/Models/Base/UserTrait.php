@@ -32,7 +32,7 @@ trait UserTrait
         if (!is_array($codes)) {
             $codes = [$codes];
         }
-        $resources = $this->aclResources;
+        $resources = $this->aclResources; // from attribute
         if ($orCodes && ($resources->whereIn('code', $orCodes)->count() > 0)) {
             return true;
         }
@@ -49,23 +49,9 @@ trait UserTrait
      */
     public static function withAclResources(array $aclResources): Builder
     {
-        $builder = app(static::class)->query();
-        $builder->distinct();
-        $builder->select('users.*');
-        $builder->join('acl_resources', function ($join) use ($aclResources) {
-            $join->whereIn('code', $aclResources);
+        return static::whereHas('aclGroups.aclResources', function (Builder $q1) use ($aclResources) {
+            $q1->whereIn('code', $aclResources);
         });
-        $builder->join('acl_group_acl_resource', 'acl_group_acl_resource.acl_resource_id', '=', 'acl_resources.id');
-        $builder->join('acl_groups', 'acl_groups.id', '=', 'acl_group_acl_resource.acl_group_id');
-        //            $builder->join('acl_group_user', 'acl_group_user.acl_group_id', '=', 'acl_group_acl_resource.acl_group_id');
-        $builder->join('acl_group_user', function ($join) {
-            $join->on('acl_group_user.acl_group_id', '=', 'acl_group_acl_resource.acl_group_id')
-                 ->on("acl_group_user.user_id", "=", "users.id");
-        });
-
-        //        $builder->groupBy('users.id');
-
-        return $builder;
     }
 
     /**
@@ -77,12 +63,9 @@ trait UserTrait
      */
     public static function withNoAclResources(array $aclResources): Builder
     {
-        $result = app(static::class)->withAclResources($aclResources)->pluck('id');
-        $builder = app(static::class)->query();
-        $builder->distinct();
-        $builder->whereNotIn('id', $result);
-
-        return $builder;
+        return static::whereDoesntHave('aclGroups.aclResources', function (Builder $q1) use ($aclResources) {
+            $q1->whereIn('code', $aclResources);
+        });
     }
 
     /**
@@ -93,11 +76,9 @@ trait UserTrait
     protected function aclResources(): Attribute
     {
         return Attribute::make(get: function () {
-
             return AclResource::with([])->whereHas('aclGroups.users', function ($query) {
                 return $query->where('id', '=', $this->getKey());
             })->get();
-
         });
     }
 

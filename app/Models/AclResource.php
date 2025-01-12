@@ -2,6 +2,8 @@
 
 namespace Modules\Acl\app\Models;
 
+use App\Models\User;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -36,6 +38,7 @@ class AclResource extends Model
 
     /**
      * You can use this instead of newFactory()
+     *
      * @var string
      */
     public static string $factory = AclResourceFactory::class;
@@ -48,4 +51,17 @@ class AclResource extends Model
         return $this->belongsToMany(AclGroup::class)->withTimestamps();
     }
 
+    /**
+     * Attribute
+     *
+     * @return Attribute
+     */
+    protected function users(): Attribute
+    {
+        return Attribute::make(get: function () {
+            return app(User::class)->withAclResources([$this->code]);
+        });
+    }
+
 }
+

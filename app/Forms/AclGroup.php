@@ -16,17 +16,19 @@ class AclGroup extends ModelBase
      */
     protected array $objectRelations = [
         'aclResources',
-        'users'
+        'users',
     ];
 
     /**
      * Singular
+     *
      * @var string
      */
     protected string $objectFrontendLabel = 'Acl Group';
 
     /**
      * Plural
+     *
      * @var string
      */
     protected string $objectsFrontendLabel = 'Acl Groups';
@@ -58,7 +60,7 @@ class AclGroup extends ModelBase
                                         'label'        => __('ID'),
                                         'validator'    => [
                                             'nullable',
-                                            'integer'
+                                            'integer',
                                         ],
                                     ],
                                     'name'        => [
@@ -68,7 +70,7 @@ class AclGroup extends ModelBase
                                         'validator'    => [
                                             'required',
                                             'string',
-                                            'Max:255'
+                                            'Max:255',
                                         ],
                                         'css_group'    => 'col-12',
                                     ],
@@ -79,7 +81,7 @@ class AclGroup extends ModelBase
                                         'validator'    => [
                                             'nullable',
                                             'string',
-                                            'Max:30000'
+                                            'Max:30000',
                                         ],
                                         'css_group'    => 'col-12',
                                     ],
@@ -104,7 +106,7 @@ class AclGroup extends ModelBase
                                         ],
                                         'validator'    => [
                                             'nullable',
-                                            'array'
+                                            'array',
                                         ],
                                     ],
                                 ],
@@ -127,13 +129,13 @@ class AclGroup extends ModelBase
                                             'form'          => 'website-base::form.user',
                                             'table'         => 'website-base::data-table.user',
                                             'table_options' => [
-                                                'description'             => "",
-                                                'useCollectionUserFilter' => false,
+                                                'description'         => "",
+                                                'filterByParentOwner' => false,
                                             ],
                                         ],
                                         'validator'    => [
                                             'nullable',
-                                            'array'
+                                            'array',
                                         ],
                                     ],
                                 ],

@@ -19,12 +19,14 @@ class AclResource extends ModelBase
 
     /**
      * Singular
+     *
      * @var string
      */
     protected string $objectFrontendLabel = 'Acl Resource';
 
     /**
      * Plural
+     *
      * @var string
      */
     protected string $objectsFrontendLabel = 'Acl Resources';
@@ -37,7 +39,7 @@ class AclResource extends ModelBase
     {
         $parentFormData = parent::getFormElements();
 
-        // $defaultSettings = $this->getDefaultFormSettingsByPermission();
+        $defaultSettings = $this->getDefaultFormSettingsByPermission();
 
         return [
             ... $parentFormData,
@@ -96,6 +98,35 @@ class AclResource extends ModelBase
                                             'table' => 'acl::data-table.acl-group',
                                         ],
                                         'validator'    => ['nullable', 'array'],
+                                    ],
+                                ],
+                            ],
+                        ],
+                        [
+                            // don't show if creating a new object ...
+                            //'disabled' => !$this->getDataSource()->getKey(),
+                            'tab'     => [
+                                'label' => __('Users'),
+                            ],
+                            'content' => [
+                                'form_elements' => [
+                                    'users' => [
+                                        'html_element' => 'element-dt-selected-no-interaction',
+                                        'label'        => __('Users'),
+                                        'description'  => __('Users for this Resource'),
+                                        'css_group'    => 'col-12',
+                                        'options'      => [
+                                            //'form'          => 'website-base::form.user',
+                                            'table'         => 'website-base::data-table.user',
+                                            'table_options' => [
+                                                'description'         => 'All users find of all groups by this acl resource.',
+                                                'filterByParentOwner' => false,
+                                            ],
+                                        ],
+                                        'validator'    => [
+                                            'nullable',
+                                            'array',
+                                        ],
                                     ],
                                 ],
                             ],
