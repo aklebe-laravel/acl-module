@@ -5,7 +5,7 @@ namespace Modules\Acl\app\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @mixin IdeHelperAclGroupUser
+ * @mixin IdeHelperAclGroupAclResource
  */
 class AclGroupAclResource extends Model
 {
