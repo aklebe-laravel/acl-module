@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Modules\Acl\app\Models\AclResource;
 use Modules\Acl\app\Services\UserService;
 
 class StaffUserPresent
@@ -14,7 +15,7 @@ class StaffUserPresent
     /**
      * Handle an incoming request.
      *
-     * @param  Request  $request
+     * @param  Request                                        $request
      * @param  Closure(Request): (Response|RedirectResponse)  $next
      *
      * @return Response|RedirectResponse
@@ -23,7 +24,7 @@ class StaffUserPresent
     {
         /** @var UserService $userService */
         $userService = app(UserService::class);
-        if ($userService->hasUserResource(Auth::user(), 'staff')) {
+        if ($userService->hasUserResource(Auth::user(), AclResource::RES_STAFF)) {
             return $next($request);
         }
 

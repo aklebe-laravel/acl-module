@@ -28,7 +28,7 @@ return [
             'description'     => 'Administrators',
             '#sync_relations' => [
                 'res' => [
-                    'admin',
+                    AclResource::RES_ADMIN,
                 ],
             ],
         ],
@@ -37,8 +37,8 @@ return [
             'description'     => 'Site Owners',
             '#sync_relations' => [
                 'res' => [
-                    'site_owner',
-                    'admin',
+                    AclResource::RES_SITE_OWNER,
+                    AclResource::RES_ADMIN,
                 ],
             ],
         ],
@@ -47,9 +47,9 @@ return [
             'description'     => 'Support Team',
             '#sync_relations' => [
                 'res' => [
-                    'trader',
-                    'staff',
-                    'support',
+                    AclResource::RES_TRADER,
+                    AclResource::RES_STAFF,
+                    AclResource::RES_SUPPORT,
                 ],
             ],
         ],
@@ -58,9 +58,9 @@ return [
             'description'     => 'Developer Team',
             '#sync_relations' => [
                 'res' => [
-                    'trader',
-                    'staff',
-                    'developer',
+                    AclResource::RES_TRADER,
+                    AclResource::RES_STAFF,
+                    AclResource::RES_DEVELOPER,
                 ],
             ],
         ],
@@ -69,8 +69,8 @@ return [
             'description'     => 'Staff/Contributors',
             '#sync_relations' => [
                 'res' => [
-                    'trader',
-                    'staff',
+                    AclResource::RES_TRADER,
+                    AclResource::RES_STAFF,
                 ],
             ],
         ],
@@ -79,9 +79,9 @@ return [
             'description'     => 'Marketing Team',
             '#sync_relations' => [
                 'res' => [
-                    'trader',
-                    'staff',
-                    'marketing',
+                    AclResource::RES_TRADER,
+                    AclResource::RES_STAFF,
+                    AclResource::RES_MARKETING,
                 ],
             ],
         ],
@@ -90,9 +90,9 @@ return [
             'description'     => 'Designer Team',
             '#sync_relations' => [
                 'res' => [
-                    'trader',
-                    'staff',
-                    'designer',
+                    AclResource::RES_TRADER,
+                    AclResource::RES_STAFF,
+                    AclResource::RES_DESIGNER,
                 ],
             ],
         ],
@@ -101,9 +101,9 @@ return [
             'description'     => 'Allowed to manage content',
             '#sync_relations' => [
                 'res' => [
-                    'trader',
-                    'staff',
-                    'manage_content',
+                    AclResource::RES_TRADER,
+                    AclResource::RES_STAFF,
+                    AclResource::RES_MANAGE_CONTENT,
                 ],
             ],
         ],
@@ -112,9 +112,9 @@ return [
             'description'     => 'Allowed to manage design',
             '#sync_relations' => [
                 'res' => [
-                    'trader',
-                    'staff',
-                    'manage_design',
+                    AclResource::RES_TRADER,
+                    AclResource::RES_STAFF,
+                    AclResource::RES_MANAGE_DESIGN,
                 ],
             ],
         ],
@@ -123,9 +123,9 @@ return [
             'description'     => 'Allowed to manage users',
             '#sync_relations' => [
                 'res' => [
-                    'trader',
-                    'staff',
-                    'manage_users',
+                    AclResource::RES_TRADER,
+                    AclResource::RES_STAFF,
+                    AclResource::RES_MANAGE_USERS,
                 ],
             ],
         ],
@@ -143,9 +143,9 @@ return [
             'description'     => 'Tester Team',
             '#sync_relations' => [
                 'res' => [
-                    'trader',
-                    'staff',
-                    'tester',
+                    AclResource::RES_TRADER,
+                    AclResource::RES_STAFF,
+                    AclResource::RES_TESTER,
                 ],
             ],
         ],

@@ -19,9 +19,12 @@ class AclResource extends Model
     use TraitBaseModel;
 
     const string RES_ADMIN = 'admin';
+    const string RES_SITE_OWNER = 'site_owner';
     const string RES_DEVELOPER = 'developer';
     const string RES_STAFF = 'staff';
     const string RES_SUPPORT = 'support';
+    const string RES_MARKETING = 'marketing';
+    const string RES_DESIGNER = 'designer';
     const string RES_TRADER = 'trader';
     const string RES_PUPPET = 'puppet';
     const string RES_NON_HUMAN = self::RES_PUPPET;

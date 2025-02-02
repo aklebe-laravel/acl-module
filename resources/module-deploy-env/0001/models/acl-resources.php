@@ -37,7 +37,7 @@ return [
             'description' => 'Staff/Contributor'
         ],
         [
-            'code'        => 'marketing',
+            'code'        => AclResource::RES_MARKETING,
             'name'        => 'Marketing',
             'description' => 'Marketing Team'
         ],
@@ -47,7 +47,7 @@ return [
             'description' => 'Trader'
         ],
         [
-            'code'        => 'designer',
+            'code'        => AclResource::RES_DESIGNER,
             'name'        => 'Designer',
             'description' => 'Designer Team'
         ],
