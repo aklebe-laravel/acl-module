@@ -8,8 +8,8 @@ return [
                 'content' => 'ask_delete_acl_resource',
                 // constant names from defaultActions[] or closure
                 'actions' => [
-                    'cancel',
-                    'delete-item',
+                    'system-base::cancel',
+                    'system-base::delete-item',
                 ],
             ],
             'send-email' => [
@@ -17,8 +17,8 @@ return [
                 'content' => 'ask_send_email',
                 // constant names from defaultActions[] or closure
                 'actions' => [
-                    'cancel',
-                    'send-email',
+                    'system-base::cancel',
+                    'website-base::send-email',
                 ],
             ],
         ],
@@ -32,8 +32,8 @@ return [
                 'content' => 'ask_delete_acl_group',
                 // constant names from defaultActions[] or closure
                 'actions' => [
-                    'cancel',
-                    'delete-item',
+                    'system-base::cancel',
+                    'system-base::delete-item',
                 ],
             ],
             'send-email' => [
@@ -41,8 +41,8 @@ return [
                 'content' => 'ask_send_email',
                 // constant names from defaultActions[] or closure
                 'actions' => [
-                    'cancel',
-                    'send-email',
+                    'system-base::cancel',
+                    'website-base::send-email',
                 ],
             ],
         ],
