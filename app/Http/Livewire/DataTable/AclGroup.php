@@ -47,6 +47,20 @@ class AclGroup extends BaseDataTable
                 ],
             ],
             [
+                'name'    => 'aclResources',
+                'label'   => __('Acl Resources'),
+                'view'    => 'data-table::livewire.js-dt.tables.columns.count',
+                'css_all' => 'text-center w-10',
+                'icon'    => 'diagram-3',
+            ],
+            [
+                'name'    => 'users',
+                'label'   => __('Users'),
+                'view'    => 'data-table::livewire.js-dt.tables.columns.count',
+                'css_all' => 'text-center w-10',
+                'icon'    => 'diagram-3',
+            ],
+            [
                 'name'       => 'description',
                 'label'      => 'Description',
                 'searchable' => true,

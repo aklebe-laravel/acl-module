@@ -46,7 +46,7 @@ class AclResource extends ModelBase
             'tab_controls' => [
                 'base_item' => [
                     'tab_pages' => [
-                        [
+                        'common'     => [
                             'tab'     => [
                                 'label' => __('Common'),
                             ],
@@ -81,7 +81,7 @@ class AclResource extends ModelBase
                                 ],
                             ],
                         ],
-                        [
+                        'acl_groups' => [
                             'disabled' => !$this->getDataSource()->getKey(),
                             'tab'      => [
                                 'label' => __('Acl Groups'),
@@ -89,19 +89,26 @@ class AclResource extends ModelBase
                             'content'  => [
                                 'form_elements' => [
                                     'aclGroups' => [
-                                        'html_element' => 'element-dt-split-default',
+                                        'html_element' => $defaultSettings['element_dt'],
                                         'label'        => __('Acl Groups'),
                                         'description'  => __('Acl groups linked to this resource'),
                                         'css_group'    => 'col-12',
                                         'options'      => [
-                                            'table' => 'acl::data-table.acl-group',
+                                            'form'          => 'acl::form.acl-group',
+                                            'table'         => 'acl::data-table.acl-group',
+                                            'table_options' => [
+                                                'hasCommands' => $defaultSettings['can_manage'],
+                                                'editable'    => $defaultSettings['can_manage'],
+                                                'canAddRow'   => $defaultSettings['can_manage'],
+                                                'removable'   => $defaultSettings['can_manage'],
+                                            ],
                                         ],
                                         'validator'    => ['nullable', 'array'],
                                     ],
                                 ],
                             ],
                         ],
-                        [
+                        'users'      => [
                             // don't show if creating a new object ...
                             //'disabled' => !$this->getDataSource()->getKey(),
                             'tab'     => [

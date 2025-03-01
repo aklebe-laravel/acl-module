@@ -49,7 +49,7 @@ class AclGroup extends ModelBase
             'tab_controls' => [
                 'base_item' => [
                     'tab_pages' => [
-                        [
+                        'common'        => [
                             'tab'     => [
                                 'label' => __('Common'),
                             ],
@@ -88,7 +88,7 @@ class AclGroup extends ModelBase
                                 ],
                             ],
                         ],
-                        [
+                        'acl_resources' => [
                             // don't show if creating a new object ...
                             'disabled' => !$this->getDataSource()->getKey(),
                             'tab'      => [
@@ -97,12 +97,19 @@ class AclGroup extends ModelBase
                             'content'  => [
                                 'form_elements' => [
                                     'aclResources' => [
-                                        'html_element' => 'element-dt-split-default',
+                                        'html_element' => $defaultSettings['element_dt'],
                                         'label'        => __('Acl Resources'),
                                         'description'  => __('Acl resources linked to this group'),
                                         'css_group'    => 'col-12',
                                         'options'      => [
-                                            'table' => 'acl::data-table.acl-resource',
+                                            'form'          => 'acl::form.acl-resource',
+                                            'table'         => 'acl::data-table.acl-resource',
+                                            'table_options' => [
+                                                'hasCommands' => $defaultSettings['can_manage'],
+                                                'editable'    => $defaultSettings['can_manage'],
+                                                'canAddRow'   => $defaultSettings['can_manage'],
+                                                'removable'   => $defaultSettings['can_manage'],
+                                            ],
                                         ],
                                         'validator'    => [
                                             'nullable',
@@ -112,7 +119,7 @@ class AclGroup extends ModelBase
                                 ],
                             ],
                         ],
-                        [
+                        'users'         => [
                             // don't show if creating a new object ...
                             'disabled' => !$this->getDataSource()->getKey(),
                             'tab'      => [
