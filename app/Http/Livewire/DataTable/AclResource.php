@@ -1,0 +1,117 @@
+<?php
+
+namespace Modules\Acl\app\Http\Livewire\DataTable;
+
+use Livewire\Attributes\On;
+use Modules\Acl\app\Models\AclResource as AclResourceModel;
+use Modules\DataTable\app\Http\Livewire\DataTable\Base\BaseDataTable;
+use Nette\NotImplementedException;
+
+class AclResource extends BaseDataTable
+{
+    /**
+     * Minimum restrictions to allow this component.
+     */
+    public const array aclResources = [AclResourceModel::RES_DEVELOPER, AclResourceModel::RES_MANAGE_USERS];
+
+    /**
+     * @var string
+     */
+    public string $eloquentModelName = AclResourceModel::class;
+
+    /**
+     * Relations loaded with getBaseBuilder()
+     * This is also important to lo load pivots automatically.
+     *
+     * @var array
+     */
+    public array $objectRelations = [
+        'aclGroups',
+    ];
+
+    /**
+     * Overwrite to init your sort orders before session exists
+     *
+     * @return void
+     */
+    protected function initSort(): void
+    {
+        $this->setSortAllCollections('name', 'asc');
+    }
+
+    /**
+     * @return array[]
+     */
+    public function getColumns(): array
+    {
+        return [
+            [
+                'name'       => 'id',
+                'label'      => 'ID',
+                'format'     => 'number',
+                'searchable' => true,
+                'sortable'   => true,
+                'css_all'    => 'show-lg text-muted font-monospace text-end w-5',
+            ],
+            [
+                'name'       => 'code',
+                'label'      => 'Code',
+                'searchable' => true,
+                'sortable'   => true,
+                'css_all'    => 'w-30',
+            ],
+            [
+                'name'       => 'name',
+                'label'      => 'Name',
+                'searchable' => true,
+                'sortable'   => true,
+                'css_all'    => 'show-md w-20',
+                'options'    => [
+                    'has_open_link' => $this->canEdit(),
+                    // 'str_limit'     => 30,
+                ],
+            ],
+            [
+                'name'    => 'aclGroups',
+                'label'   => __('Acl Groups'),
+                'view'    => 'data-table::livewire.js-dt.tables.columns.count',
+                'css_all' => 'text-center w-10',
+                'icon'    => 'users',
+            ],
+            [
+                'name'       => 'description',
+                'label'      => 'Description',
+                'searchable' => true,
+                'sortable'   => true,
+                'css_all'    => 'show-lg w-20',
+            ],
+            [
+                'name'       => 'updated_at',
+                'label'      => 'Updated',
+                'searchable' => true,
+                'sortable'   => true,
+                'view'       => 'data-table::livewire.js-dt.tables.columns.datetime-since',
+                'css_all'    => 'show-lg w-5',
+            ],
+        ];
+    }
+
+    /**
+     * @param  string|int  $livewireId
+     * @param  string|int  $aclResourceId
+     *
+     * @return bool
+     */
+    #[On('send-email')]
+    public function sendEmail(string|int $livewireId, string|int $aclResourceId): bool
+    {
+        if (!$this->checkLivewireId($livewireId)) {
+            return false;
+        }
+
+        throw (new NotImplementedException("Send Email not implemented yet"));
+        // return false;
+    }
+
+
+}

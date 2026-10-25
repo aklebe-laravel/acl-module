@@ -1,0 +1,34 @@
+{
+    "name": "aklebe-laravel/acl-module",
+    "type": "laravel-module",
+    "description": "Access Control List to allow or deny users or user groups accessing objects by resources.",
+    "authors": [
+        {
+            "name": "Andreas Klebe",
+            "email": "a.klebe.work@gmail.com"
+        }
+    ],
+    "require": {
+        "directorytree/ldaprecord-laravel": "^4.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+            }
+        },
+        "module-dir": "Acl"
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Acl\\": "",
+            "Modules\\Acl\\database\\factories\\": "database/factories/",
+            "Modules\\Acl\\database\\seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Acl\\tests\\": "tests/"
+        }
+    }
+}
