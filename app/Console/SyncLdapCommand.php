@@ -150,10 +150,13 @@ class SyncLdapCommand extends Command
 
         $message = sprintf("LDAP-Sync finished. Users imported: %s/%s, failed: %s.", $usersImported, count($usersFound), $usersFailed);
         if ($usersFailed) {
-            $this->error($message);
+            // Data problems of single users (e.g. an email used twice) are reported above and logged as errors,
+            // but do not fail the command: it runs in deployments and cron jobs, and one bad entry must not stop
+            // them. An unreachable LDAP throws above and still fails.
+            $this->warn($message);
             Log::error($message);
 
-            return self::FAILURE;
+            return self::SUCCESS;
         }
         $this->info($message);
         Log::info($message);
