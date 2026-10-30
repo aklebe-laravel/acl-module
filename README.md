@@ -1,4 +1,4 @@
-## Acl Module
+# Acl Module
 
 A module for the [Mercy Scaffold](https://github.com/aklebe-laravel/mercy-scaffold).
 
@@ -7,17 +7,20 @@ Optional: users and groups from an LDAP server (`directorytree/ldaprecord-larave
 
 ## Installation
 
-Add the module to `requires` in the project's `setup.yaml`, see
+Part of the Mercy base: every project gets it automatically in a released version (`base_requires` of the
+[Mercy defaults](https://github.com/aklebe-laravel/mercy-php-deployment/blob/master/resources/defaults/setup.yaml)).
+List it in the project's `requires` only to use another version or branch, see
 [Require modules and themes](https://github.com/aklebe-laravel/deploy-env-module#require-modules-and-themes).
 
 ## LDAP
 
 ### Configuration
 
-With the Mercy deployment the main LDAP values come from the `ldap` section of `setup.yaml`,
-the deployment writes them into the `.env` (do not edit them there):
+With the Mercy deployment the LDAP values come from the `ldap` section of the project config (usually the network
+file `project/config/networks/<name>.yaml`, the password in `secrets.yaml`). The deployment writes them into the `.env`
+(do not edit them there):
 
-| `setup.yaml`                     | Env                              | Example                                           |
+| Project config                   | Env                              | Example                                           |
 |----------------------------------|----------------------------------|---------------------------------------------------|
 | `ldap.enabled`                   | `LDAP_ENABLED`                   | `true`                                            |
 | `ldap.host`                      | `LDAP_HOST`                      | `ldap.example.com`                                |
@@ -38,8 +41,9 @@ Further env keys (defaults in the env templates): `LDAP_CACHE`, `LDAP_LOGGING`, 
 ### Console
 
 Import the groups and the users of the groups in `LDAP_USERS_ALLOWED_FROM_GROUPS`
-(order: groups, users, then the links between them). Users whose email already belongs to another user
-are skipped and logged; the command ends with a summary and a non-zero exit code if something failed:
+(order: groups, users, then the links between them). Data errors of single users (like an email that already belongs
+to another user) are logged as errors and skipped, so business data never stops a deployment; only an unreachable LDAP
+server makes the command fail. It ends with a summary:
 
 ```
 php artisan ldap:sync-all
@@ -63,7 +67,8 @@ Save the groups of an LDAP user to the local database:
 php artisan ldap:connect groups "peter"
 ```
 
-In a dev environment prefix the commands with `sail` (`sail artisan ldap:sync-all`).
+In a dev environment prefix the commands with `sail` (`sail artisan ldap:sync-all`), on production use
+`docker compose exec mercy.app php artisan ...`. Run the sync before business imports that only update existing users (`can_create => false`).
 
 ## License
 
