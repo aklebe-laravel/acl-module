@@ -3,7 +3,6 @@
 namespace Modules\Acl\app\Providers;
 
 use App\Models\User as AppUser;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Event;
 use LdapRecord\Laravel\Events\Import\Synchronized;
@@ -51,12 +50,8 @@ class AclServiceProvider extends ModuleBaseServiceProvider
         $this->app->singleton(UserService::class, UserService::class);
         $this->app->singleton('acl_user_service', UserService::class);
 
-        // Bind to the concrete base class
+        // user model of this module, see SystemBaseServiceProvider::register()
         $this->app->bind(AppUser::class, ModuleUser::class);
-        // Bind to the core framework interface for injection
-        $this->app->bind(Authenticatable::class, ModuleUser::class);
-        // Shorthand
-        $this->app->bind('user', ModuleUser::class);
 
         // Load Modules/Acl/config/ldap.php to the global config('ldap') Key
         $this->mergeConfigFrom(module_path('Acl', 'config/ldap.php'), 'ldap');
@@ -112,10 +107,10 @@ class AclServiceProvider extends ModuleBaseServiceProvider
                 // database
                 'database'        => [
                     // the local user eloquent model
-                    'model'          => AppUser::class,
+                    'model'           => AppUser::class,
 
                     // save password hashes
-                    'sync_passwords' => true,
+                    'sync_passwords'  => true,
 
                     // db column to identify
                     'guid_column'     => 'guid',
